@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotify_app/core/utils/app_assets.dart';
+import 'package:spotify_app/presentation/intro/bloc/theme_cubit.dart';
 import 'package:spotify_app/presentation/intro/widgets/custom_button.dart';
 import 'package:spotify_app/presentation/intro/widgets/custom_container_mode.dart';
 
@@ -41,27 +43,52 @@ class ChooseModeBody extends StatelessWidget {
           const SizedBox(
             height: 31,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            CustomContainerMode(path: AppAssets.moon,),
-            SizedBox(width: 58,),
-            CustomContainerMode(path: AppAssets.sun,),
-          ],),
+              CustomContainerMode(
+                path: AppAssets.moon,
+                onTap: () {
+                  context.read<ThemeCubit>().updateMode(ThemeMode.dark);
+                },
+              ),
+              const SizedBox(
+                width: 58,
+              ),
+              CustomContainerMode(
+                path: AppAssets.sun,
+                onTap: () {
+                  context.read<ThemeCubit>().updateMode(ThemeMode.light);
+                },
+              ),
+            ],
+          ),
           const SizedBox(
             height: 17,
           ),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            Text("Dark Mode",style: TextStyle(color: Colors.white),),
-            SizedBox(width: 58,),
-            Text("Light Mode",style: TextStyle(color: Colors.white),),
-          ],),
+              Text(
+                "Dark Mode",
+                style: TextStyle(color: Colors.white),
+              ),
+              SizedBox(
+                width: 58,
+              ),
+              Text(
+                "Light Mode",
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
           const SizedBox(
             height: 68,
           ),
-          CustomButton(text: "Continue",onPressed: (){},),
+          CustomButton(
+            text: "Continue",
+            onPressed: () {},
+          ),
           const SizedBox(
             height: 69,
           ),

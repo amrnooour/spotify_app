@@ -1,9 +1,24 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:spotify_app/core/router/app_router.dart';
 import 'package:spotify_app/core/utils/app_theme.dart';
+import 'package:spotify_app/presentation/intro/bloc/theme_cubit.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getApplicationDocumentsDirectory(),
+  );
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(create: (context) => ThemeCubit(),)
+    ],
+    child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,10 +26,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      routerConfig: router,
+    return BlocBuilder<ThemeCubit,ThemeMode>(
+      builder: (context, state) => MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        darkTheme: AppTheme.darkTheme,
+        theme: AppTheme.lightTheme,
+        themeMode: state,
+        routerConfig: router,
+      ),
     );
   }
 }
