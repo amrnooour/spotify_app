@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app/core/router/navigation.dart';
 import 'package:spotify_app/core/utils/app_assets.dart';
 import 'package:spotify_app/core/utils/constants.dart';
-import 'package:spotify_app/presentation/intro/widgets/custom_button.dart';
+import 'package:spotify_app/common/widgets/custom_button.dart';
 
 class GetStartedBody extends StatelessWidget {
   const GetStartedBody({super.key});

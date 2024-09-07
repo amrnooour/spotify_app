@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:spotify_app/core/router/navigation.dart';
 import 'package:spotify_app/core/utils/app_assets.dart';
+import 'package:spotify_app/core/utils/constants.dart';
 import 'package:spotify_app/presentation/intro/bloc/theme_cubit.dart';
-import 'package:spotify_app/presentation/intro/widgets/custom_button.dart';
+import 'package:spotify_app/common/widgets/custom_button.dart';
 import 'package:spotify_app/presentation/intro/widgets/custom_container_mode.dart';
 
 class ChooseModeBody extends StatelessWidget {
@@ -87,7 +89,9 @@ class ChooseModeBody extends StatelessWidget {
           ),
           CustomButton(
             text: "Continue",
-            onPressed: () {},
+            onPressed: () {
+              customNavigation(context, Constants.signupOrsigninRoute);
+            },
           ),
           const SizedBox(
             height: 69,
