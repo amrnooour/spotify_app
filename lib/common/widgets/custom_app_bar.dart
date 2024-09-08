@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app/common/helpers/is_dark_mode.dart';
+import 'package:spotify_app/core/utils/app_assets.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  final bool isVisible;
+  const CustomAppBar({super.key,this.isVisible = false});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
+      title: isVisible? SvgPicture.asset(AppAssets.logo):const Text(""),
+      centerTitle: true,
       leading: GestureDetector(
         onTap: () {
           Navigator.pop(context);
