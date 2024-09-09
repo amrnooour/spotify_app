@@ -8,6 +8,7 @@ import 'package:spotify_app/core/router/app_router.dart';
 import 'package:spotify_app/core/utils/app_theme.dart';
 import 'package:spotify_app/firebase_options.dart';
 import 'package:spotify_app/presentation/intro/bloc/theme_cubit.dart';
+import 'package:spotify_app/services_locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,11 +20,12 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MultiBlocProvider(
-    providers: [
-      BlocProvider(create: (context) => ThemeCubit(),)
-    ],
-    child: const MyApp()));
+  await initializeDependencies();
+  runApp(MultiBlocProvider(providers: [
+    BlocProvider(
+      create: (context) => ThemeCubit(),
+    )
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit,ThemeMode>(
+    return BlocBuilder<ThemeCubit, ThemeMode>(
       builder: (context, state) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
         darkTheme: AppTheme.darkTheme,
