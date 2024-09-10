@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify_app/data/models/auth/create_user_req.dart';
@@ -10,7 +11,7 @@ abstract class AuthFirebaseServices {
 
 class AuthFirebaseServicesImpl extends AuthFirebaseServices {
   @override
-  Future<Either> signin(SigninUserReq signinUserReq) async{
+  Future<Either> signin(SigninUserReq signinUserReq) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: signinUserReq.email,
@@ -31,10 +32,14 @@ class AuthFirebaseServicesImpl extends AuthFirebaseServices {
   @override
   Future<Either> signup(CreateUserReq createUserReq) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      var data = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: createUserReq.email,
         password: createUserReq.password,
       );
+      FirebaseFirestore.instance.collection("users").add({
+        "name" : createUserReq.fullName,
+        "email" :data.user?.email
+      });
       return right("sign up successfly");
     } on FirebaseAuthException catch (e) {
       String message = "";
@@ -44,6 +49,6 @@ class AuthFirebaseServicesImpl extends AuthFirebaseServices {
         message = 'The account already exists for that email.';
       }
       return left(message);
-    } 
+    }
   }
 }

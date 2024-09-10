@@ -7,6 +7,7 @@ class CustomTextField extends StatelessWidget {
   final String? hintText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final bool obscureText;
 
   const CustomTextField(
       {super.key,
@@ -14,13 +15,14 @@ class CustomTextField extends StatelessWidget {
       this.controller,
       this.hintText,
       this.suffixIcon,
-      this.prefixIcon});
+      this.prefixIcon,this.obscureText=false});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: onChanged,
       controller: controller,
+      obscureText: obscureText,
       decoration: InputDecoration(
         disabledBorder: buildBorder(),
         hintText: hintText,

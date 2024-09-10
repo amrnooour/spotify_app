@@ -53,6 +53,7 @@ class SigninBody extends StatelessWidget {
                   height: 16,
                 ),
                 CustomTextField(
+                  obscureText: true,
                     controller: cubit.password, hintText: "password"),
                 const SizedBox(
                   height: 61,
