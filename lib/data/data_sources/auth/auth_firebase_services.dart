@@ -4,15 +4,28 @@ import 'package:spotify_app/data/models/auth/create_user_req.dart';
 import 'package:spotify_app/data/models/auth/signin_user_req.dart';
 
 abstract class AuthFirebaseServices {
-  Future<void> signin(SigninUserReq signinUserReq);
+  Future<Either> signin(SigninUserReq signinUserReq);
   Future<Either> signup(CreateUserReq createUserReq);
 }
 
 class AuthFirebaseServicesImpl extends AuthFirebaseServices {
   @override
-  Future<void> signin(SigninUserReq signinUserReq) {
-    // TODO: implement signin
-    throw UnimplementedError();
+  Future<Either> signin(SigninUserReq signinUserReq) async{
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: signinUserReq.email,
+        password: signinUserReq.password,
+      );
+      return right("sign in successfly");
+    } on FirebaseAuthException catch (e) {
+      String message = "";
+      if (e.code == 'invaild-email') {
+        message = 'The email  is too invaild.';
+      } else if (e.code == 'invaild-credential') {
+        message = 'wrong password';
+      }
+      return left(message);
+    }
   }
 
   @override

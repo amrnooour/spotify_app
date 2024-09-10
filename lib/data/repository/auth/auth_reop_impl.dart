@@ -7,9 +7,8 @@ import 'package:spotify_app/services_locator.dart';
 
 class AuthReopImpl extends AuthRepo {
   @override
-  Future<void> signin(SigninUserReq signinUserReq) {
-    // TODO: implement signin
-    throw UnimplementedError();
+  Future<Either> signin(SigninUserReq signinUserReq) async{
+   return await sl<AuthFirebaseServices>().signin(signinUserReq);
   }
 
   @override
