@@ -5,16 +5,17 @@ import 'package:spotify_app/core/utils/app_assets.dart';
 
 class CustomAppBar extends StatelessWidget {
   final bool isVisible;
-  const CustomAppBar({super.key,this.isVisible = false});
+  final bool hideArrowBack;
+  const CustomAppBar({super.key, this.isVisible = false,this.hideArrowBack=false});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      title: isVisible? SvgPicture.asset(AppAssets.logo):const Text(""),
+      title: isVisible ? SvgPicture.asset(AppAssets.logo) : const Text(""),
       centerTitle: true,
-      leading: GestureDetector(
+      leading: hideArrowBack?const Text(""): GestureDetector(
         onTap: () {
           Navigator.pop(context);
         },
