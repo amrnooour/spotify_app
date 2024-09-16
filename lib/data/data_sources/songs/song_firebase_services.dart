@@ -16,7 +16,7 @@ class SongFirebaseServicesImpl extends SongFirebaseServices {
       List<SongsEntites> songs = [];
       var data = await FirebaseFirestore.instance
           .collection("songs")
-          .orderBy("realseDate",descending: true)
+          .orderBy("realseDate")
           .limit(3)
           .get();
       for (var element in data.docs) {
@@ -35,7 +35,7 @@ class SongFirebaseServicesImpl extends SongFirebaseServices {
       List<SongsEntites> songs = [];
       var data = await FirebaseFirestore.instance
           .collection("songs")
-          .orderBy("realseDate",descending: true)
+          .orderBy("realseDate")
           .get();
       for (var element in data.docs) {
         var songsModel = SongsModel.fromJson(element.data());
