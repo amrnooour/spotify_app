@@ -49,14 +49,17 @@ class _HomeBodyState extends State<HomeBody>
           ],
         ),
         CustomTabs(controller: controller),
-        SizedBox(
-          height: 250,
-          child: TabBarView(controller: controller, children: [
-            const CustomNewsSongs(),
-            Container(),
-            Container(),
-            Container(),
-          ]),
+        Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: SizedBox(
+            height: 250,
+            child: TabBarView(controller: controller, children: [
+              const CustomNewsSongs(),
+              Container(),
+              Container(),
+              Container(),
+            ]),
+          ),
         )
       ],
     );

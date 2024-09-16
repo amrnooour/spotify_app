@@ -5,6 +5,8 @@ import 'package:spotify_app/domain/entites/songs/songs_entites.dart';
 
 abstract class SongFirebaseServices {
   Future<Either> getNewsSongs();
+  Future<Either> getPlayList();
+
 }
 
 class SongFirebaseServicesImpl extends SongFirebaseServices {
@@ -14,8 +16,26 @@ class SongFirebaseServicesImpl extends SongFirebaseServices {
       List<SongsEntites> songs = [];
       var data = await FirebaseFirestore.instance
           .collection("songs")
-          .orderBy("realseDate")
+          .orderBy("realseDate",descending: true)
           .limit(3)
+          .get();
+      for (var element in data.docs) {
+        var songsModel = SongsModel.fromJson(element.data());
+        songs.add(songsModel.toEntity());
+      }
+      return right(songs);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+  
+  @override
+  Future<Either> getPlayList() async{
+    try {
+      List<SongsEntites> songs = [];
+      var data = await FirebaseFirestore.instance
+          .collection("songs")
+          .orderBy("realseDate",descending: true)
           .get();
       for (var element in data.docs) {
         var songsModel = SongsModel.fromJson(element.data());
