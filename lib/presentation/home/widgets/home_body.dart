@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app/common/widgets/custom_app_bar.dart';
 import 'package:spotify_app/core/utils/app_assets.dart';
+import 'package:spotify_app/presentation/home/widgets/custom_news_songs.dart';
 import 'package:spotify_app/presentation/home/widgets/custom_tabs.dart';
 
 class HomeBody extends StatefulWidget {
@@ -45,10 +46,18 @@ class _HomeBodyState extends State<HomeBody>
             const SizedBox(
               height: 40,
             ),
-          ], 
+          ],
         ),
-        CustomTabs(controller: controller)
-
+        CustomTabs(controller: controller),
+        SizedBox(
+          height: 250,
+          child: TabBarView(controller: controller, children: [
+            const CustomNewsSongs(),
+            Container(),
+            Container(),
+            Container(),
+          ]),
+        )
       ],
     );
   }

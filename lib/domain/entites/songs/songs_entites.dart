@@ -5,7 +5,11 @@ class SongsEntites {
   final String artist;
   final num duration;
   final Timestamp realseDate;
+  final String imageUrl;
 
-  SongsEntites({required this.title,required this.artist,required this.duration,
-  required this.realseDate});
+  SongsEntites(
+      {required this.title,
+      required this.artist,
+      required this.duration,
+      required this.realseDate,required this.imageUrl});
 }
