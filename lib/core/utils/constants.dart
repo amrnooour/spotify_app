@@ -6,6 +6,8 @@ abstract class Constants {
   static const signinRoute = "/signin";
 
   static const homeRoute = "/home";
+  static const songPlayerRoute = "/songPlayer";
+
 
 
 

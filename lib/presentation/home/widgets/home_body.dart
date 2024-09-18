@@ -54,19 +54,23 @@ class _HomeBodyState extends State<HomeBody>
           Padding(
             padding: const EdgeInsets.only(left: 15),
             child: SizedBox(
-              height: 250,
+              height: 800,
               child: TabBarView(controller: controller, children: [
-                const CustomNewsSongs(),
+                const Column(
+                  children: [
+                    CustomNewsSongs(),
+                    SizedBox(
+                      height: 37,
+                    ),
+                    SizedBox(height: 500, child: CustomPlayList())
+                  ],
+                ),
                 Container(),
                 Container(),
                 Container(),
               ]),
             ),
           ),
-          const SizedBox(height: 37,),
-          const SizedBox(
-            height: 500,
-            child: CustomPlayList())
         ],
       ),
     );

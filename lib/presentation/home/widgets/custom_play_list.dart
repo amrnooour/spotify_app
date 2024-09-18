@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spotify_app/core/router/navigation.dart';
+import 'package:spotify_app/core/utils/constants.dart';
 import 'package:spotify_app/presentation/home/bloc/play_list_cubit.dart';
 import 'package:spotify_app/presentation/home/bloc/play_list_states.dart';
 import 'package:spotify_app/presentation/home/widgets/custom_row_of_play_list.dart';
@@ -48,6 +50,10 @@ class CustomPlayList extends StatelessWidget {
                     itemCount: state.songs.length,
                     itemBuilder: (context, index) {
                       return CustomRowOfPlayList(
+                          onTap: () {
+                            customNavigation(context, Constants.songPlayerRoute,
+                                extra: state.songs[index]);
+                          },
                           title: state.songs[index].title,
                           artist: state.songs[index].artist,
                           duration: state.songs[index].duration

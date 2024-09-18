@@ -6,10 +6,14 @@ class SongsEntites {
   final num duration;
   final Timestamp realseDate;
   final String imageUrl;
+  final String songUrl;
 
-  SongsEntites(
-      {required this.title,
+  SongsEntites( 
+      {
+      required this.songUrl,
+      required this.title,
       required this.artist,
       required this.duration,
-      required this.realseDate,required this.imageUrl});
+      required this.realseDate,
+      required this.imageUrl});
 }

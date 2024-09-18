@@ -5,12 +5,13 @@ class CustomRowOfPlayList extends StatelessWidget {
   final String title;
   final String artist;
   final String duration;
+  final void Function()? onTap;
 
   const CustomRowOfPlayList(
       {super.key,
       required this.title,
       required this.artist,
-      required this.duration});
+      required this.duration, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +19,17 @@ class CustomRowOfPlayList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         children: [
-          Container(
-            width: 37,
-            height: 37,
-            decoration:
-                const BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
-            child: const Icon(
-              Icons.play_arrow,
-              color: AppColors.darkGrey,
+          GestureDetector(
+            onTap: onTap,
+            child: Container(
+              width: 37,
+              height: 37,
+              decoration:
+                  const BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+              child: const Icon(
+                Icons.play_arrow,
+                color: AppColors.darkGrey,
+              ),
             ),
           ),
           const SizedBox(

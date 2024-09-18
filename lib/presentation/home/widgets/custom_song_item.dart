@@ -5,12 +5,13 @@ class CustomSongItem extends StatelessWidget {
   final String image;
   final String title;
   final String artist;
+  final void Function()? onTap;
 
   const CustomSongItem(
       {super.key,
       required this.image,
       required this.title,
-      required this.artist});
+      required this.artist, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -19,28 +20,31 @@ class CustomSongItem extends StatelessWidget {
       children: [
         ClipRRect(
             borderRadius: BorderRadius.circular(30),
-            child: Stack(
-              children: [
-                Image.network(
-                  image,
-                  height: 185,
-                  width: 147,
-                  fit: BoxFit.cover,
-                ),
-                Positioned(
-                  bottom: 0,
-                  right: 5,
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.grey,
-                    ),
-                    child: const Center(child: Icon(Icons.play_arrow)),
+            child: GestureDetector(
+              onTap: onTap,
+              child: Stack(
+                children: [
+                  Image.network(
+                    image,
+                    height: 185,
+                    width: 147,
+                    fit: BoxFit.cover,
                   ),
-                )
-              ],
+                  Positioned(
+                    bottom: 0,
+                    right: 5,
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.grey,
+                      ),
+                      child: const Center(child: Icon(Icons.play_arrow)),
+                    ),
+                  )
+                ],
+              ),
             )),
         const SizedBox(
           height: 13,
