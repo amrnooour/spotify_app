@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spotify_app/common/helpers/is_dark_mode.dart';
 import 'package:spotify_app/domain/entites/songs/songs_entites.dart';
 import 'package:spotify_app/presentation/song_player/widgets/song_player_body.dart';
@@ -14,10 +15,12 @@ class SongPlayer extends StatelessWidget {
         backgroundColor: Colors.transparent,
         leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              GoRouter.of(context).pop();
             },
-            icon: const Icon(Icons.arrow_back_ios_rounded,
-          size: 16,)),
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              size: 16,
+            )),
         title: Text(
           "Now Playing",
           style: TextStyle(
