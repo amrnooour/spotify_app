@@ -1,7 +1,9 @@
 # 📘 spotify_app
 
+![s1](https://github.com/user-attachments/assets/53ba8385-a0d8-414b-8aa3-d39d76577be1)
+![s2](https://github.com/user-attachments/assets/2971741c-4e81-4abb-aba4-406128a390dc)
+![s3](https://github.com/user-attachments/assets/24f45435-aa71-4740-b1c5-97dc3245aa38)
 
-![spotify](https://github.com/user-attachments/assets/49b7da8a-96a8-4240-853a-91cb416755e7)
 
 
 
