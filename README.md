@@ -1,4 +1,4 @@
-# 📘 spotify_app
+# 📘 Overview
 
 ![s1](https://github.com/user-attachments/assets/53ba8385-a0d8-414b-8aa3-d39d76577be1)
 ![s2](https://github.com/user-attachments/assets/2971741c-4e81-4abb-aba4-406128a390dc)
