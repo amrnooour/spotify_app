@@ -1,16 +1,22 @@
-# spotify_app
+# 📘 spotify_app
 
-A new Flutter project.
 
-## Getting Started
+![spotify](https://github.com/user-attachments/assets/49b7da8a-96a8-4240-853a-91cb416755e7)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## About this App
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Spotify Songs Listen to music, millions of songs, and podcasts for free. Stream the music and podcasts you love, and find music and singing, or your next favorite song from Wegz and Tamer Hosny to Sherine Abdel Wahab and Ahmed Saad, from all over the world.
+
+• Discover new songs, albums, playlists, and podcasts
+• Search for your favorite song, artist, or podcast.
+• Enjoy playlists and daily mixes tailored just for you
+
+## The technology used 
+
+• firebase auth,firebase firestore,firebase storage
+• bloc as a state managemaent
+• claen arc as a design arc
+
+
